@@ -1,5 +1,7 @@
 package com.pengsoo.hom;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +21,12 @@ public class HomeController {
 	MemberRepository memberRepository;
 	
 	@RequestMapping("join")
-	private String join() {
+	public String join() {
 		return "join";
 	}
 	
 	@RequestMapping("joinOk")
-	private String joinOk(HttpServletRequest request) {
+	public String joinOk(HttpServletRequest request) {
 		
 		String name =request.getParameter("name");
 		int age = Integer.parseInt(request.getParameter("age"));//integer로 형변환
@@ -43,6 +45,21 @@ public class HomeController {
 		
 		return "joinOk";
 	}
+	
+	@RequestMapping("search")
+	public String search() {
+		
+	List<MemberDto> memberDtos =	memberRepository.findByName("홍길동");
+	
+	for(MemberDto memberDto : memberDtos) {
+		
+		System.out.println(memberDto.toString());
+	}
+		
+		return "serarchResult";
+	}
+	
+	
 }
 
 
