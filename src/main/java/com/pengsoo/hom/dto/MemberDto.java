@@ -23,10 +23,10 @@ public class MemberDto {
 	
 	@Id // 매핑된 테이블의 기본키에 해당하는 속성위에 선언. 
 	@Column(name = "hakbun")//테이블의 필드와 매핑
-	@GeneratedValue(strategy = GenerationType.AUTO ) // 기본키 생성 전략
+	@GeneratedValue(strategy = GenerationType.AUTO ) // 기본키 생성 전략.@GeneratedValue는 데이터베이스 생성 위임. GenerationType.AUTO는 시퀀스 생성
 	private Long hakbun; // 학번 기본키
 	
-	@Column(name = "name", nullable = false) //이름값 null 아니게한다. nullable -> null 값 허용 여부
+	@Column(name = "name", nullable = false, length = 20) //이름값 null 아니게한다. nullable -> null 값 허용 여부
 	private String name;
 	
 	@Column(name = "age")
